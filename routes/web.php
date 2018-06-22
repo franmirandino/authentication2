@@ -14,6 +14,10 @@
 Route::get('/', 'Auth\LoginController@showLoginForm');
 
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('admin/users', 'UsersController@index')->name('admin.users.index');
+
+
+Route::post('impersonation', 'ImpersonationsController@store')->name('impersonation.store');
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
