@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function canImpersonate($userId = null)
+    {
+        // si el usuario es administador,  cualquiea que sea el permiso para personificar
+
+        return $this->id === 1 && $this->id !== $userId;
+    }
 }

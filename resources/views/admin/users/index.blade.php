@@ -19,13 +19,15 @@
 						<td>{{ $user->name }}</td>
 						<td>{{ $user->email }}</td>
 						<td>
-							<form method="POST" action="{{route('impersonation.store')}}">
-								{{ csrf_field() }}
-								<input type="hidden" name="user_id" value="{{ $user->id }}">
-								<button class="btn btn-info btn-xs">
-									Personificar
-								</button>								
-							</form>
+							@canImpersonate($user->id)
+								<form method="POST" action="{{route('impersonation.store')}}">
+									{{ csrf_field() }}
+									<input type="hidden" name="user_id" value="{{ $user->id }}">
+									<button class="btn btn-info btn-xs">
+										Personificar
+									</button>								
+								</form>
+							@endcanImpersonate
 						</td>
 					</tr>
 					@endforeach
